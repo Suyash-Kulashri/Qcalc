@@ -3,21 +3,21 @@ package org.example;
 
 public class StandardCalculator {
     
-    private int result;
+    private double result;
 
-    public void add(int a, int b){
+    public void add(double a, double b){
         result = a + b;
     }
 
-    public void subtract(int a, int b){
+    public void subtract(double a, double b){
         result = a-b;
     }
 
-    public void multiply(int a, int b){
+    public void multiply(double a, double b){
         result = a*b;
     }
 
-    public void divide(int a, int b){
+    public void divide(double a, double b){
         if(b == 0){
             throw new IllegalArgumentException("Cannot divide by zero");
         } else {
@@ -25,11 +25,11 @@ public class StandardCalculator {
         }
     }
 
-    public int getResult(){
+    public double getResult(){
         return result;
     }
 
-    public void setResult(int result){
+    public void setResult(double result){
         this.result = result;
     }
 

@@ -35,14 +35,14 @@ class AppTest{
     @DisplayName("Test addition")
     void testAddition(){
         standardCalculator.add(1,1);
-        int result = standardCalculator.getResult();
+        double result = standardCalculator.getResult();
         Assertions.assertEquals(2, result);
     }
     @Test
     @DisplayName("Test addition with edge case both 0")
     void testAdditionEdgeCase(){
         standardCalculator.add(0,0);
-        int result = standardCalculator.getResult();
+        double result = standardCalculator.getResult();
         Assertions.assertEquals(0, result);
     }
 
@@ -50,7 +50,7 @@ class AppTest{
     @DisplayName("Test addition with edge case both negative")
     void testAdditionEdgeCase2(){
         standardCalculator.add(-1,-1);
-        int result = standardCalculator.getResult();
+        double result = standardCalculator.getResult();
         Assertions.assertEquals(-2, result);
     }
 
@@ -58,7 +58,7 @@ class AppTest{
     @DisplayName("Test addition with edge case one positive, one negative")
     void testAdditionEdgeCase3(){
         standardCalculator.add(-1,1);
-        int result = standardCalculator.getResult();
+        double result = standardCalculator.getResult();
         Assertions.assertEquals(0, result);
     }
 
@@ -66,7 +66,7 @@ class AppTest{
     @DisplayName("Test addition with edge case one negative, one positive")
     void testAdditionEdgeCase4(){
         standardCalculator.add(1,-1);
-        int result = standardCalculator.getResult();
+        double result = standardCalculator.getResult();
         Assertions.assertEquals(0, result);
     }
 
@@ -75,7 +75,7 @@ class AppTest{
     @DisplayName("Test subtraction")
     void testSubtraction(){
         standardCalculator.subtract(1,1);
-        int result = standardCalculator.getResult();
+        double result = standardCalculator.getResult();
         Assertions.assertEquals(0, result);
     }
 
@@ -83,7 +83,7 @@ class AppTest{
     @DisplayName("Test subtraction with edge case both 0")
     void testSubtractionEdgeCase(){
         standardCalculator.subtract(0,0);
-        int result = standardCalculator.getResult();
+        double result = standardCalculator.getResult();
         Assertions.assertEquals(0, result);
     }
 
@@ -91,7 +91,7 @@ class AppTest{
     @DisplayName("Test subtraction with edge case both negative")
     void testSubtractionEdgeCase2(){
         standardCalculator.subtract(-1,-1);
-        int result = standardCalculator.getResult();
+        double result = standardCalculator.getResult();
         Assertions.assertEquals(0, result);
     }
 
@@ -99,7 +99,7 @@ class AppTest{
     @DisplayName("Test subtraction with edge case one negative, one positive")
     void testSubtractionEdgeCase3(){
         standardCalculator.subtract(-1,1);
-        int result = standardCalculator.getResult();
+        double result = standardCalculator.getResult();
         Assertions.assertEquals(-2, result);
     }
 
@@ -107,7 +107,7 @@ class AppTest{
     @DisplayName("Test subtraction with edge case one positive, one negative")
     void testSubtractionEdgeCase4(){
         standardCalculator.subtract(1,-1);
-        int result = standardCalculator.getResult();
+        double result = standardCalculator.getResult();
         Assertions.assertEquals(2, result);
     }
 
@@ -116,7 +116,7 @@ class AppTest{
     @DisplayName("Test multiplication")
     void testMultiplication(){
         standardCalculator.multiply(2,3);
-        int result = standardCalculator.getResult();
+        double result = standardCalculator.getResult();
         Assertions.assertEquals(6, result);
     }
 
@@ -124,7 +124,7 @@ class AppTest{
     @DisplayName("Test multiplication with edge case both 0")
     void testMultiplicationEdgeCase(){
         standardCalculator.multiply(0,0);
-        int result = standardCalculator.getResult();
+        double result = standardCalculator.getResult();
         Assertions.assertEquals(0, result);
     }
 
@@ -132,7 +132,7 @@ class AppTest{
     @DisplayName("Test multiplication with edge case both negative")
     void testMultiplicationEdgeCase2(){
         standardCalculator.multiply(-2,-3);
-        int result = standardCalculator.getResult();
+        double result = standardCalculator.getResult();
         Assertions.assertEquals(6, result);
     }
 
@@ -140,7 +140,7 @@ class AppTest{
     @DisplayName("Test multiplication with edge case one negative, one positive")
     void testMultiplicationEdgeCase3(){
         standardCalculator.multiply(-3,4);
-        int result = standardCalculator.getResult();
+        double result = standardCalculator.getResult();
         Assertions.assertEquals(-12, result);
     }
 
@@ -148,7 +148,7 @@ class AppTest{
     @DisplayName("Test multiplication with edge case one positive, one negative")
     void testMultiplicationEdgeCase4(){
         standardCalculator.multiply(2,-5);
-        int result = standardCalculator.getResult();
+        double result = standardCalculator.getResult();
         Assertions.assertEquals(-10, result);
     }
 
@@ -157,7 +157,7 @@ class AppTest{
     @DisplayName("Test division")
     void testDivision(){
         standardCalculator.divide(6,3);
-        int result = standardCalculator.getResult();
+        double result = standardCalculator.getResult();
         Assertions.assertEquals(2, result);
     }
 
@@ -172,7 +172,7 @@ class AppTest{
      @DisplayName("Test division with edge case both negative")
      void testDivisionEdgeCase2(){
          standardCalculator.divide(-6,-3);
-         int result = standardCalculator.getResult();
+         double result = standardCalculator.getResult();
          Assertions.assertEquals(2, result);
      }
 
@@ -180,7 +180,7 @@ class AppTest{
     @DisplayName("Test division with edge case one negative, one positive")
     void testDivisionEdgeCase3(){
         standardCalculator.divide(-6,3);
-        int result = standardCalculator.getResult();
+        double result = standardCalculator.getResult();
         Assertions.assertEquals(-2, result);
     }
 
@@ -188,7 +188,7 @@ class AppTest{
     @DisplayName("Test division with edge case one positive, one negative")
     void testDivisionEdgeCase4(){
         standardCalculator.divide(6,-3);
-        int result = standardCalculator.getResult();
+        double result = standardCalculator.getResult();
         Assertions.assertEquals(-2, result);
     }
 
@@ -204,8 +204,8 @@ class AppTest{
     @DisplayName("Test division by smaller numerator")
     void testDivisionBySmallerNumerator(){
         standardCalculator.divide(3,6);
-        int result = standardCalculator.getResult();
-        Assertions.assertEquals(0, result);
+        double result = standardCalculator.getResult();
+        Assertions.assertEquals(0.5, result);
     }
 
     //Test clear result
@@ -214,7 +214,7 @@ class AppTest{
     void testClearResult(){
         standardCalculator.add(5,5);
         standardCalculator.clearResult();
-        int result = standardCalculator.getResult();
+        double result = standardCalculator.getResult();
         Assertions.assertEquals(0, result);
     }
 }
