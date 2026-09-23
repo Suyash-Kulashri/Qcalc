@@ -1,20 +1,32 @@
 package org.example;
 
 public class ScientificCalculator extends StandardCalculator {
+    
+    private double radian;
 
+    public double getRadian() {
+        return radian;
+    }
+    public void setRadian(double radian) {
+        this.radian = radian;
+    }
+
+    public void degreesToRadian(double a){
+        radian = Math.toRadians(a);
+    }
     public void sin(double a){
-        result = Math.sin(a);
-        setResult(result);
+        degreesToRadian(a);
+        setResult(Math.sin(radian));
     }
     
     public void cos(double a){
-        result = Math.cos(a);
-        setResult(result);
+        degreesToRadian(a);
+        setResult(Math.cos(radian));
     }
 
     public void tan(double a){
-        result = Math.tan(a);
-        setResult(result);
+        degreesToRadian(a);
+        setResult(Math.tan(radian));
     }
 
     public void square(double a){
@@ -30,30 +42,25 @@ public class ScientificCalculator extends StandardCalculator {
         if(a <= 0){
             throw new IllegalArgumentException("Logarithm is undefined for non-positive values");
         }
-        result = Math.log(a);
-        setResult(result);
+        setResult(Math.log(a));
     }
 
     public void sqrt(double a){
         if(a<0){
             throw new IllegalArgumentException("Square root is undefined for negative values"); 
         }
-        result = Math.sqrt(a);
-        setResult(result);
+        setResult(Math.sqrt(a));
     }
 
     public void cbrt(double a){
-        result = Math.cbrt(a);
-        setResult(result);
+        setResult(Math.cbrt(a));
     }
 
     public void exp(double a){
-        result = Math.exp(a);
-        setResult(result);
+        setResult(Math.exp(a));
     }
 
     public void pow(double a, double b){
-        result = Math.pow(a, b);
-        setResult(result);
+        setResult(Math.pow(a, b));
     }
 }
