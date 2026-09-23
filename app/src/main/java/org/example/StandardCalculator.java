@@ -3,9 +3,9 @@ package org.example;
 
 public class StandardCalculator {
     
-    private double result;
+    protected double result;
 
-    public void add(double a, double b){
+    public final void add(double a, double b){
         double result = a + b;
         if ((result == Double.MAX_VALUE) || (result == Double.POSITIVE_INFINITY)) {
             throw new ArithmeticException("Overflow occurred during addition");
@@ -15,7 +15,7 @@ public class StandardCalculator {
         this.result = result;
     }
 
-    public void subtract(double a, double b){
+    public final void subtract(double a, double b){
         double result = a-b;
         if ((result == Double.MAX_VALUE) || (result == Double.POSITIVE_INFINITY)) {
             throw new ArithmeticException("Overflow occurred during subtraction");
@@ -25,7 +25,7 @@ public class StandardCalculator {
         this.result = result;
     }
 
-    public void multiply(double a, double b){
+    public final void multiply(double a, double b){
         double result = a*b;
         if ((result == Double.MAX_VALUE) || (result == Double.POSITIVE_INFINITY)) {
             throw new ArithmeticException("Overflow occurred during multiplication");
@@ -35,7 +35,7 @@ public class StandardCalculator {
         this.result = result;
     }
 
-    public void divide(double a, double b){
+    public final void divide(double a, double b){
         if(b == 0){
             throw new IllegalArgumentException("Cannot divide by zero");
         } else {

@@ -1,0 +1,291 @@
+package org.example;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+
+public class StandardCalculatorTest {
+    private StandardCalculator standardCalculator;
+
+    @BeforeEach
+    void setup(){
+        standardCalculator = new StandardCalculator();
+    }
+
+    //Addition test cases
+    @Test
+    @DisplayName("Test addition")
+    void testAddition(){
+        standardCalculator.add(1,1);
+        double result = standardCalculator.getResult();
+        Assertions.assertEquals(2, result);
+    }
+    @Test
+    @DisplayName("Test addition with edge case both 0")
+    void testAdditionEdgeCase(){
+        standardCalculator.add(0,0);
+        double result = standardCalculator.getResult();
+        Assertions.assertEquals(0, result);
+    }
+
+    @Test
+    @DisplayName("Test addition with edge case both negative")
+    void testAdditionEdgeCase2(){
+        standardCalculator.add(-1,-1);
+        double result = standardCalculator.getResult();
+        Assertions.assertEquals(-2, result);
+    }
+
+    @Test
+    @DisplayName("Test addition with edge case one positive, one negative")
+    void testAdditionEdgeCase3(){
+        standardCalculator.add(-1,1);
+        double result = standardCalculator.getResult();
+        Assertions.assertEquals(0, result);
+    }
+
+    @Test
+    @DisplayName("Test addition with edge case one negative, one positive")
+    void testAdditionEdgeCase4(){
+        standardCalculator.add(1,-1);
+        double result = standardCalculator.getResult();
+        Assertions.assertEquals(0, result);
+    }
+
+    @Test
+    @DisplayName("Test case for overflow in addition")
+    void testAdditionOverflow(){
+        Assertions.assertThrows(ArithmeticException.class, () -> {
+            standardCalculator.add(Double.MAX_VALUE, Double.MAX_VALUE);
+        });
+    }
+
+    @Test
+    @DisplayName("Test case for overflow in addition with one operand as 1")
+    void testAdditionOverflow1(){
+        Assertions.assertThrows(ArithmeticException.class, () -> {
+            standardCalculator.add(Double.MAX_VALUE, 1);
+        });
+    }
+
+    //Subtraction test cases
+    @Test
+    @DisplayName("Test subtraction")
+    void testSubtraction(){
+        standardCalculator.subtract(1,1);
+        double result = standardCalculator.getResult();
+        Assertions.assertEquals(0, result);
+    }
+
+    @Test
+    @DisplayName("Test subtraction with edge case both 0")
+    void testSubtractionEdgeCase(){
+        standardCalculator.subtract(0,0);
+        double result = standardCalculator.getResult();
+        Assertions.assertEquals(0, result);
+    }
+
+    @Test
+    @DisplayName("Test subtraction with edge case both negative")
+    void testSubtractionEdgeCase2(){
+        standardCalculator.subtract(-1,-1);
+        double result = standardCalculator.getResult();
+        Assertions.assertEquals(0, result);
+    }
+
+    @Test
+    @DisplayName("Test subtraction with edge case one negative, one positive")
+    void testSubtractionEdgeCase3(){
+        standardCalculator.subtract(-1,1);
+        double result = standardCalculator.getResult();
+        Assertions.assertEquals(-2, result);
+    }
+
+    @Test
+    @DisplayName("Test subtraction with edge case one positive, one negative")
+    void testSubtractionEdgeCase4(){
+        standardCalculator.subtract(1,-1);
+        double result = standardCalculator.getResult();
+        Assertions.assertEquals(2, result);
+    }
+
+    @Test 
+    @DisplayName("Test case for overflow in subtraction")
+    void testSubtractionOverflow(){
+        Assertions.assertThrows(ArithmeticException.class, () -> {
+            standardCalculator.subtract(-Double.MAX_VALUE, Double.MAX_VALUE);
+        });
+    }
+
+    @Test 
+    @DisplayName ("Test case for overflow in subtraction with one operand as -1")
+    void testSubtractionOverflow2(){
+        Assertions.assertThrows(ArithmeticException.class, () -> {
+            standardCalculator.subtract(-Double.MAX_VALUE, 1);
+        });
+    }
+
+    @Test 
+    @DisplayName ("Test case for overflow in subtraction with one operand as Double.MAX_VALUE and the other as 0")
+    void testSubtractionOverflow3(){
+        Assertions.assertThrows(ArithmeticException.class, () -> {
+            standardCalculator.subtract(Double.MAX_VALUE, 0);
+        });
+    }
+
+    //Multiplication test cases
+    @Test
+    @DisplayName("Test multiplication")
+    void testMultiplication(){
+        standardCalculator.multiply(2,3);
+        double result = standardCalculator.getResult();
+        Assertions.assertEquals(6, result);
+    }
+
+    @Test
+    @DisplayName("Test multiplication with edge case both 0")
+    void testMultiplicationEdgeCase(){
+        standardCalculator.multiply(0,0);
+        double result = standardCalculator.getResult();
+        Assertions.assertEquals(0, result);
+    }
+
+    @Test
+    @DisplayName("Test multiplication with edge case both negative")
+    void testMultiplicationEdgeCase2(){
+        standardCalculator.multiply(-2,-3);
+        double result = standardCalculator.getResult();
+        Assertions.assertEquals(6, result);
+    }
+
+    @Test
+    @DisplayName("Test multiplication with edge case one negative, one positive")
+    void testMultiplicationEdgeCase3(){
+        standardCalculator.multiply(-3,4);
+        double result = standardCalculator.getResult();
+        Assertions.assertEquals(-12, result);
+    }
+
+    @Test
+    @DisplayName("Test multiplication with edge case one positive, one negative")
+    void testMultiplicationEdgeCase4(){
+        standardCalculator.multiply(2,-5);
+        double result = standardCalculator.getResult();
+        Assertions.assertEquals(-10, result);
+    }
+
+    @Test 
+    @DisplayName ("Test case for overflow in multiplication")
+    void testMultiplicationOverflow(){
+        Assertions.assertThrows(ArithmeticException.class, () -> {
+            standardCalculator.multiply(Double.MAX_VALUE, Double.MAX_VALUE);
+        });
+    }
+
+    @Test 
+    @DisplayName ("Test case for overflow in multiplication with one operand as Double.MAX_VALUE and the other as 2")
+    void testMultiplicationOverflow2(){
+        Assertions.assertThrows(ArithmeticException.class, () -> {
+            standardCalculator.multiply(Double.MAX_VALUE, 2);
+        });
+    }
+
+    @Test 
+    @DisplayName ("Test case for overflow in multiplication with both operands as -Double.MAX_VALUE")
+    void testMultiplicationOverflow3(){
+        Assertions.assertThrows(ArithmeticException.class, () -> {
+            standardCalculator.multiply(-Double.MAX_VALUE, -Double.MAX_VALUE);
+        });
+    }
+
+    @Test 
+    @DisplayName ("Test case for overflow in multiplication with one operand as negative")
+    void testMultiplicationOverflow4(){
+        Assertions.assertThrows(ArithmeticException.class, () -> {
+            standardCalculator.multiply(-Double.MAX_VALUE, 2);
+        });
+    }
+
+    //Division test cases
+    @Test
+    @DisplayName("Test division")
+    void testDivision(){
+        standardCalculator.divide(6,3);
+        double result = standardCalculator.getResult();
+        Assertions.assertEquals(2, result);
+    }
+
+    @Test
+    @DisplayName("Test division with edge case both 0")
+    void testDivisionEdgeCase(){
+        Assertions.assertThrows(IllegalArgumentException.class, () -> {
+            standardCalculator.divide(0,0);
+        });
+    }
+     @Test
+     @DisplayName("Test division with edge case both negative")
+     void testDivisionEdgeCase2(){
+         standardCalculator.divide(-6,-3);
+         double result = standardCalculator.getResult();
+         Assertions.assertEquals(2, result);
+     }
+
+    @Test
+    @DisplayName("Test division with edge case one negative, one positive")
+    void testDivisionEdgeCase3(){
+        standardCalculator.divide(-6,3);
+        double result = standardCalculator.getResult();
+        Assertions.assertEquals(-2, result);
+    }
+
+    @Test
+    @DisplayName("Test division with edge case one positive, one negative")
+    void testDivisionEdgeCase4(){
+        standardCalculator.divide(6,-3);
+        double result = standardCalculator.getResult();
+        Assertions.assertEquals(-2, result);
+    }
+
+    @Test
+    @DisplayName("Test division by zero")
+    void testDivisionByZero(){
+        Assertions.assertThrows(IllegalArgumentException.class, () -> {
+            standardCalculator.divide(6,0);
+        });
+    }
+
+    @Test
+    @DisplayName("Test division by smaller numerator")
+    void testDivisionBySmallerNumerator(){
+        standardCalculator.divide(3,6);
+        double result = standardCalculator.getResult();
+        Assertions.assertEquals(0.5, result);
+    }
+
+    @Test 
+    @DisplayName ("Test case for overflow in division")
+    void testDivisionOverflow(){
+        Assertions.assertThrows(ArithmeticException.class, () -> {
+            standardCalculator.divide(Double.MAX_VALUE, 0.0000000000000001);
+        });
+    }
+
+    @Test 
+    @DisplayName ("Test case for overflow in division with one operand as -Double.MAX_VALUE and the other as 0.0000000000000001")
+    void testDivisionOverflow2(){
+        Assertions.assertThrows(ArithmeticException.class, () -> {
+            standardCalculator.divide(-Double.MAX_VALUE, 0.0000000000000001);
+        });
+    }
+
+    //Test clear result
+    @Test
+    @DisplayName("Test clear result")
+    void testClearResult(){
+        standardCalculator.add(5,5);
+        standardCalculator.clearResult();
+        double result = standardCalculator.getResult();
+        Assertions.assertEquals(0, result);
+    }
+}
