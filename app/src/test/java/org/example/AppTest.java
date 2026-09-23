@@ -70,6 +70,22 @@ class AppTest{
         Assertions.assertEquals(0, result);
     }
 
+    @Test
+    @DisplayName("Test case for overflow in addition")
+    void testAdditionOverflow(){
+        Assertions.assertThrows(ArithmeticException.class, () -> {
+            standardCalculator.add(Double.MAX_VALUE, Double.MAX_VALUE);
+        });
+    }
+
+    @Test
+    @DisplayName("Test case for overflow in addition with one operand as 1")
+    void testAdditionOverflow1(){
+        Assertions.assertThrows(ArithmeticException.class, () -> {
+            standardCalculator.add(Double.MAX_VALUE, 1);
+        });
+    }
+
     //Subtraction test cases
     @Test
     @DisplayName("Test subtraction")
@@ -111,6 +127,30 @@ class AppTest{
         Assertions.assertEquals(2, result);
     }
 
+    @Test 
+    @DisplayName("Test case for overflow in subtraction")
+    void testSubtractionOverflow(){
+        Assertions.assertThrows(ArithmeticException.class, () -> {
+            standardCalculator.subtract(-Double.MAX_VALUE, Double.MAX_VALUE);
+        });
+    }
+
+    @Test 
+    @DisplayName ("Test case for overflow in subtraction with one operand as -1")
+    void testSubtractionOverflow2(){
+        Assertions.assertThrows(ArithmeticException.class, () -> {
+            standardCalculator.subtract(-Double.MAX_VALUE, 1);
+        });
+    }
+
+    @Test 
+    @DisplayName ("Test case for overflow in subtraction with one operand as Double.MAX_VALUE and the other as 0")
+    void testSubtractionOverflow3(){
+        Assertions.assertThrows(ArithmeticException.class, () -> {
+            standardCalculator.subtract(Double.MAX_VALUE, 0);
+        });
+    }
+
     //Multiplication test cases
     @Test
     @DisplayName("Test multiplication")
@@ -150,6 +190,38 @@ class AppTest{
         standardCalculator.multiply(2,-5);
         double result = standardCalculator.getResult();
         Assertions.assertEquals(-10, result);
+    }
+
+    @Test 
+    @DisplayName ("Test case for overflow in multiplication")
+    void testMultiplicationOverflow(){
+        Assertions.assertThrows(ArithmeticException.class, () -> {
+            standardCalculator.multiply(Double.MAX_VALUE, Double.MAX_VALUE);
+        });
+    }
+
+    @Test 
+    @DisplayName ("Test case for overflow in multiplication with one operand as Double.MAX_VALUE and the other as 2")
+    void testMultiplicationOverflow2(){
+        Assertions.assertThrows(ArithmeticException.class, () -> {
+            standardCalculator.multiply(Double.MAX_VALUE, 2);
+        });
+    }
+
+    @Test 
+    @DisplayName ("Test case for overflow in multiplication with both operands as -Double.MAX_VALUE")
+    void testMultiplicationOverflow3(){
+        Assertions.assertThrows(ArithmeticException.class, () -> {
+            standardCalculator.multiply(-Double.MAX_VALUE, -Double.MAX_VALUE);
+        });
+    }
+
+    @Test 
+    @DisplayName ("Test case for overflow in multiplication with one operand as negative")
+    void testMultiplicationOverflow4(){
+        Assertions.assertThrows(ArithmeticException.class, () -> {
+            standardCalculator.multiply(-Double.MAX_VALUE, 2);
+        });
     }
 
     //Division test cases
@@ -206,6 +278,22 @@ class AppTest{
         standardCalculator.divide(3,6);
         double result = standardCalculator.getResult();
         Assertions.assertEquals(0.5, result);
+    }
+
+    @Test 
+    @DisplayName ("Test case for overflow in division")
+    void testDivisionOverflow(){
+        Assertions.assertThrows(ArithmeticException.class, () -> {
+            standardCalculator.divide(Double.MAX_VALUE, 0.0000000000000001);
+        });
+    }
+
+    @Test 
+    @DisplayName ("Test case for overflow in division with one operand as -Double.MAX_VALUE and the other as 0.0000000000000001")
+    void testDivisionOverflow2(){
+        Assertions.assertThrows(ArithmeticException.class, () -> {
+            standardCalculator.divide(-Double.MAX_VALUE, 0.0000000000000001);
+        });
     }
 
     //Test clear result

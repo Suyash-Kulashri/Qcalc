@@ -10,7 +10,7 @@ public class App {
 
     public static void main(String[] args) {
         StandardCalculator calc = new StandardCalculator();
-        calc.add(5, 3);
+        calc.multiply(Double.MAX_VALUE,Double.MIN_VALUE);
         System.out.println(calc.getResult());
     }
 }
