@@ -5,6 +5,18 @@ public class StandardCalculator {
     
     protected double result;
 
+    public double getResult(){
+        return result;
+    }
+
+    public void setResult(double result){
+        this.result = result;
+    }
+
+    public void clearResult(){
+        result = 0;
+    }
+
     public final void add(double a, double b){
         double result = a + b;
         if ((result == Double.MAX_VALUE) || (result == Double.POSITIVE_INFINITY)) {
@@ -12,7 +24,7 @@ public class StandardCalculator {
         }else if((result == -Double.MAX_VALUE) || (result == Double.NEGATIVE_INFINITY)){
             throw new ArithmeticException("Underflow occurred during addition");
         }
-        this.result = result;
+        setResult(result);
     }
 
     public final void subtract(double a, double b){
@@ -22,7 +34,7 @@ public class StandardCalculator {
         }else if((result == -Double.MAX_VALUE) || (result == Double.NEGATIVE_INFINITY)){
             throw new ArithmeticException("Underflow occurred during subtraction");
         }
-        this.result = result;
+        setResult(result);
     }
 
     public final void multiply(double a, double b){
@@ -32,7 +44,7 @@ public class StandardCalculator {
         }else if((result == -Double.MAX_VALUE) || (result == Double.NEGATIVE_INFINITY)){
             throw new ArithmeticException("Underflow occurred during multiplication");
         }
-        this.result = result;
+        setResult(result);
     }
 
     public final void divide(double a, double b){
@@ -45,19 +57,7 @@ public class StandardCalculator {
             }else if((result == -Double.MAX_VALUE) || (result == Double.NEGATIVE_INFINITY)){
                 throw new ArithmeticException("Underflow occurred during division");
             }
-            this.result = result;
+            setResult(result);
         }
-    }
-
-    public double getResult(){
-        return result;
-    }
-
-    public void setResult(double result){
-        this.result = result;
-    }
-
-    public void clearResult(){
-        result = 0;
     }
 }

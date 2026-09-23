@@ -25,6 +25,19 @@ public class ScientificCalculator extends StandardCalculator {
     }
 
     public void tan(double a){
+        double normalisedAngle = a%360;
+        if(normalisedAngle < 0){
+            normalisedAngle += 360;
+        }
+
+        if(normalisedAngle == 90 || normalisedAngle == 270){
+            if(a<0){
+                setResult(Double.NEGATIVE_INFINITY);
+            } else {
+                setResult(Double.POSITIVE_INFINITY);
+            }
+            return;
+        }
         degreesToRadian(a);
         setResult(Math.tan(radian));
     }
