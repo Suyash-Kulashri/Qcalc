@@ -161,4 +161,60 @@ public class ScientificCalculatorTest {
         double result = scientificCalculator.getResult();
         Assertions.assertEquals(-1, result, 0.0001);
     }
+
+    //Test case for square function
+    @Test
+    @DisplayName("Test case for square function")
+    public void testSquare() {
+        scientificCalculator.square(5);
+        double result = scientificCalculator.getResult();
+        Assertions.assertEquals(25, result, 0.0001);
+    }
+
+    @Test 
+    @DisplayName("Test case for square function with negative input")
+    public void testSquareNegativeInput() {
+        scientificCalculator.square(-5);
+        double result = scientificCalculator.getResult();
+        Assertions.assertEquals(25, result, 0.0001);
+    }
+
+    @Test 
+    @DisplayName ("Test case for square function with 0 input")
+    public void testSquareZeroInput() {
+        scientificCalculator.square(0);
+        double result = scientificCalculator.getResult();
+        Assertions.assertEquals(0, result, 0.0001);
+    }
+
+    @Test 
+    @DisplayName("Test case for square function with decimal input")
+    public void testSquareDecimalInput() {
+        scientificCalculator.square(2.5);
+        double result = scientificCalculator.getResult();
+        Assertions.assertEquals(6.25, result, 0.0001);
+    }
+
+    @Test 
+    @DisplayName("Test case for square function with large input")
+    public void testSquareLargeInput() {
+        scientificCalculator.square(1e10);
+        double result = scientificCalculator.getResult();
+        Assertions.assertEquals(1e20, result, 0.0001);
+    }
+
+    @Test 
+    @DisplayName("Test case for square function with double MAX_VALUE input")
+    public void testSquareMaxValueInput() {
+        Assertions.assertThrows(ArithmeticException.class, () -> {
+            scientificCalculator.square(Double.MAX_VALUE);
+        });
+    }
+    @Test 
+    @DisplayName("Test case for square function with double sqrt of MAX_VALUE input")
+    public void testSquareMaxValueInput2() {
+        scientificCalculator.square(Math.sqrt(Double.MAX_VALUE));
+        double result = scientificCalculator.getResult();
+        Assertions.assertEquals(Double.MAX_VALUE,result,1E300);
+    }
 }

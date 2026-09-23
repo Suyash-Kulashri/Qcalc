@@ -44,6 +44,11 @@ public class ScientificCalculator extends StandardCalculator {
 
     public void square(double a){
         multiply(a, a);
+        double currentResult = getResult();
+        if(currentResult >= Double.MAX_VALUE || currentResult <= -Double.MAX_VALUE){
+            throw new ArithmeticException("Overflow occurred during squaring");
+        }
+        
     }
 
     public void cube(double a){
