@@ -266,12 +266,24 @@ public class ScientificCalculatorTest {
             scientificCalculator.cube(Double.MAX_VALUE);
         });
     }
-    
-    @Test 
-    @DisplayName("Test case for cube function with double cbrt of MAX_VALUE input")
+
+    @Test
+    @DisplayName("Cube of value just below cbrt(MAX_VALUE)")
     public void testCubeMaxValueInput2() {
-        scientificCalculator.cube(Math.cbrt(Double.MAX_VALUE));
+        double input = Math.nextDown(Math.cbrt(Double.MAX_VALUE));
+        scientificCalculator.cube(input);
         double result = scientificCalculator.getResult();
-        Assertions.assertEquals(Double.MAX_VALUE,result,1E300);
+        Assertions.assertEquals(Double.MAX_VALUE, result, 1E300);
     }
+
+    @Test
+    @DisplayName ("Test case for cube fun overflow")
+    public void testCubeOverflow() {
+        Assertions.assertThrows(ArithmeticException.class,
+            () -> scientificCalculator.cube(Math.cbrt(Double.MAX_VALUE) * 1.01));
+    }
+
+    //Test cases for log
+    
+
 }
