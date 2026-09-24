@@ -217,4 +217,61 @@ public class ScientificCalculatorTest {
         double result = scientificCalculator.getResult();
         Assertions.assertEquals(Double.MAX_VALUE,result,1E300);
     }
+
+    //Test cases for cube function
+    @Test 
+    @DisplayName("Test case for cube function")
+    public void testCube(){
+        scientificCalculator.cube(5);
+        double result = scientificCalculator.getResult();
+        Assertions.assertEquals(125, result,0.0001);
+    }
+
+    @Test 
+    @DisplayName("TEst case for cube fun for negative input")
+    public void testCubeNegativeInput(){
+        scientificCalculator.cube(-4);
+        double result = scientificCalculator.getResult();
+        Assertions.assertEquals(-64,result,0.0001);
+    }
+
+    @Test 
+    @DisplayName("Test case for cube function at 0")
+    public void testCubeAt0(){
+        scientificCalculator.cube(0);
+        double result = scientificCalculator.getResult();
+        Assertions.assertEquals(0,result,0.0001);
+    }
+
+    @Test 
+    @DisplayName ("Test case for cube fun for very large value")
+    public void testCubeVeryLarge(){
+        scientificCalculator.cube(1e10);
+        double result = scientificCalculator.getResult();
+        Assertions.assertEquals(1e+30, result,0.0001);
+    }
+
+    @Test 
+    @DisplayName ("Test case forcube function for decimal input")
+    public void testCubeDecimal(){
+        scientificCalculator.cube(2.5);
+        double result = scientificCalculator.getResult();
+        Assertions.assertEquals(15.625, result,0.0001);
+    }
+
+    @Test 
+    @DisplayName("Test case for cube function with double MAX_VALUE input")
+    public void testCubeMaxValueInput() {
+        Assertions.assertThrows(ArithmeticException.class, () -> {
+            scientificCalculator.cube(Double.MAX_VALUE);
+        });
+    }
+    
+    @Test 
+    @DisplayName("Test case for cube function with double cbrt of MAX_VALUE input")
+    public void testCubeMaxValueInput2() {
+        scientificCalculator.cube(Math.cbrt(Double.MAX_VALUE));
+        double result = scientificCalculator.getResult();
+        Assertions.assertEquals(Double.MAX_VALUE,result,1E300);
+    }
 }

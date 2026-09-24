@@ -54,6 +54,11 @@ public class ScientificCalculator extends StandardCalculator {
     public void cube(double a){
         multiply(a, a);
         multiply(getResult(), a);
+        double currentResult = getResult();
+        if(Double.isInfinite(currentResult) || currentResult > Double.MAX_VALUE || currentResult < -Double.MAX_VALUE){
+            throw new ArithmeticException("Overflow occured during cubing");
+        }
+        setResult(currentResult);
     }
 
     public void log(double a){
